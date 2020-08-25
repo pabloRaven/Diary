@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Dziennik Ucznia"    Height="450" Width="800">
+
+   
+    
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -17,7 +21,7 @@
             <Button Content="Edytuj" Width="100" Height="25" Margin="5"/>
             <Button Content="Usuń" Width="100" Height="25" Margin="5"/>
             <ComboBox  Width="150" Height="25" Margin="5"/>
-            <Button Content="Odśwież" Width="100" Height="25" Margin="5"/>
+            <Button Style="{StaticResource BtnRefreshStyle}" Content="Odśwież" Width="100" Height="25" Margin="5"/>
         </StackPanel>
         <DataGrid Grid.Row="1"  Margin="5"/>
 
