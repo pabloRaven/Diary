@@ -22,8 +22,7 @@ namespace Diary.ViewModels
             InitGruops();
 
         }
-
-        
+              
 
         public RelayCommand RefreshStudentsCommand { get; set; }
         public RelayCommand AddStudentCommand { get; set; }
@@ -78,10 +77,6 @@ namespace Diary.ViewModels
             }
 
         }
-
-
-
-
         private void RefreshStudents(object obj)
         {
             RefreshDiary();
@@ -99,10 +94,10 @@ namespace Diary.ViewModels
                   $"ucznia { SelectedStudent.FirstName} { SelectedStudent.LastName} ?",
                   MessageDialogStyle.AffirmativeAndNegative);
 
-            if (dialog != MessageDialogStyle.Affirmative)
-                // usuwanie z bazy danych
+            if (dialog != MessageDialogResult.Affirmative)
+                    // usuwanie z bazy danych
 
-                RefreshDiary();
+                    RefreshDiary();
         }
 
 
