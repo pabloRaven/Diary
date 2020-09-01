@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diary.Models
+namespace Diary.Models.Domains
 {
-    public class Group
+    public enum Subject
     {
-        
-        public int Id { get; set; }
-        public string Name { get; set; }
+        Math =1 , Technology , Physic, PolishLang, ForeignLang
     }
 }
