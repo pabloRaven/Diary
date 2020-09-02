@@ -18,7 +18,7 @@ namespace Diary.Models.Domains
         public string Comments { get; set; }
         public bool Activities { get; set; }
         public int GroupId { get; set; }
-        
+
 
         public Group Group { get; set; }
         public ICollection<Rating> Ratings { get; set; }

@@ -37,7 +37,8 @@ namespace Diary.ViewModels
         public StudentWrapper Student
         {
             get { return _student; }
-            set {
+            set
+            {
                 _student = value;
                 OnPropertyChanged();
             }
@@ -92,11 +93,11 @@ namespace Diary.ViewModels
         private void Confirm(object obj)
         {
             if (!IsUpdate)
-                            AddStudent();
-            
+                AddStudent();
+
             else
-                            UpdateStudent();
-            
+                UpdateStudent();
+
             CloseWindow(obj as Window);
         }
 
@@ -114,7 +115,7 @@ namespace Diary.ViewModels
         {
             CloseWindow(obj as Window);
         }
-        private void CloseWindow (Window window)
+        private void CloseWindow(Window window)
         {
             window.Close();
         }

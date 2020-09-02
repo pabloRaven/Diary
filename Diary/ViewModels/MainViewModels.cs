@@ -15,11 +15,11 @@ namespace Diary.ViewModels
     {
         public MainViewModels()
         {
+            using (var context = new ApplicationDbContext())
+            {
+                var students = context.Students.ToList();
+            }
 
-           // using ( var context = new AplicationDbContext())
-            //{
-                //var students = context.Students.ToList();
-          // }
             AddStudentCommand = new RelayCommand(AddEditStudent);
             EditStudentCommand = new RelayCommand(AddEditStudent, CanEditDeleteStudent);
             DeleteStudentCommand = new AsyncRelayCommand(DeleteStudent, CanEditDeleteStudent);
@@ -28,12 +28,12 @@ namespace Diary.ViewModels
             InitGruops();
 
         }
-              
+
 
         public RelayCommand RefreshStudentsCommand { get; set; }
         public RelayCommand AddStudentCommand { get; set; }
         public RelayCommand EditStudentCommand { get; set; }
-        public RelayCommand DeleteStudentCommand { get; set; }
+        public AsyncRelayCommand DeleteStudentCommand { get; set; }
 
 
         private StudentWrapper _selectedStudent;
@@ -48,14 +48,15 @@ namespace Diary.ViewModels
             }
 
         }
-        
+
         private int _selectedGroupId;
 
         public int SelectedGroupId
         {
             get { return _selectedGroupId; }
-            set 
-            { _selectedGroupId = value;
+            set
+            {
+                _selectedGroupId = value;
                 OnPropertyChanged();
             }
         }
@@ -101,9 +102,9 @@ namespace Diary.ViewModels
                   MessageDialogStyle.AffirmativeAndNegative);
 
             if (dialog != MessageDialogResult.Affirmative)
-                    // usuwanie z bazy danych
+                // usuwanie z bazy danych
 
-                    RefreshDiary();
+                RefreshDiary();
         }
 
 

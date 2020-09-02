@@ -41,10 +41,7 @@ namespace Diary.Commands
             _execute(parameter);
         }
 
-        public static implicit operator RelayCommand(AsyncRelayCommand v)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
 

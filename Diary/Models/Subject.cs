@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diary.Models.Domains
+namespace Diary.Models
 {
     public enum Subject
     {
-        Math =1 , Technology , Physic, PolishLang, ForeignLang
+        Math = 1, Technology, Physic, PolishLang, ForeignLang
     }
 }

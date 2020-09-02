@@ -6,11 +6,11 @@ namespace Diary
     using System.Data.Entity;
     using System.Linq;
 
-    public class AplicationDbContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
-        
-        public AplicationDbContext()
-            : base("name=AplicationDBContext")
+
+        public ApplicationDbContext()
+            : base("name=ApplicationDBContext")
         {
         }
         public DbSet<Student> Students { get; set; }
@@ -25,5 +25,5 @@ namespace Diary
         }
     }
 
-    
+
 }
