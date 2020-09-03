@@ -1,5 +1,5 @@
 ﻿using Diary.Commands;
-using Diary.Models;
+using System.Data.Sql;
 using Diary.Models.Wrappers;
 using Diary.Views;
 using MahApps.Metro.Controls;

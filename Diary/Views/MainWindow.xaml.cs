@@ -12,7 +12,7 @@ namespace Diary.Views
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainViewModels() ;
+            DataContext = new MainViewModels();
 
         }
 

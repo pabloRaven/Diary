@@ -10,7 +10,7 @@ namespace Diary
     {
 
         public ApplicationDbContext()
-            : base("name=ApplicationDBContext")
+            : base("Name=ApplicationDbContext")
         {
         }
         public DbSet<Student> Students { get; set; }
