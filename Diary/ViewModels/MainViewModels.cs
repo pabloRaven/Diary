@@ -12,7 +12,7 @@ using Diary.Models.Domains;
 
 namespace Diary.ViewModels
 {
-    class MainViewModels : ViewModelsBase
+   public class MainViewModels : ViewModelsBase
     {
         private Repository _repositiry = new Repository();
         public MainViewModels()

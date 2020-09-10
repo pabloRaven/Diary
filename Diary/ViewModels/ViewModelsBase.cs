@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 
 namespace Diary.ViewModels
 {
-    class ViewModelsBase : INotifyPropertyChanged
+   public  class ViewModelsBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

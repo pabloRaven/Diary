@@ -9,6 +9,7 @@ namespace Diary.Models.Domains
     {
         public Student()
         {
+            //Group = new Group();
             Ratings = new Collection<Rating>();
         }
 
