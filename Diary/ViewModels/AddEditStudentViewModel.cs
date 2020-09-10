@@ -1,7 +1,6 @@
 ﻿using Diary.Commands;
-using Diary.Models;
+using Diary.Models.Domains;
 using Diary.Models.Wrappers;
-using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
@@ -10,6 +9,8 @@ namespace Diary.ViewModels
 {
     class AddEditStudentViewModel : ViewModelsBase
     {
+        private Repository _repositiry = new Repository();
+
         public AddEditStudentViewModel(StudentWrapper student = null)
         {
             CloseCommand = new RelayCommand(Close);
@@ -65,9 +66,9 @@ namespace Diary.ViewModels
                 OnPropertyChanged();
             }
         }
-        private ObservableCollection<GroupWrapper> _group;
+        private ObservableCollection<Group> _group;
 
-        public ObservableCollection<GroupWrapper> Groups
+        public ObservableCollection<Group> Groups
         {
             get { return _group; }
             set
@@ -103,12 +104,12 @@ namespace Diary.ViewModels
 
         private void UpdateStudent()
         {
-            // baza danych
+            _repositiry.UpdateStudents(Student);
         }
 
         private void AddStudent()
         {
-            //baza danych
+            _repositiry.AddStudents(Student);
         }
 
         private void Close(object obj)
@@ -120,18 +121,16 @@ namespace Diary.ViewModels
             window.Close();
         }
 
+
         private void InitGruops()
         {
-            Groups = new ObservableCollection<GroupWrapper>
-            {
-                new GroupWrapper  { Id = 0, Name = "--brak--" },
-                new GroupWrapper  { Id = 1, Name = "1A" },
-                new GroupWrapper  { Id = 2, Name = "2A" }
+            var groups = _repositiry.GetGroups();
+            groups.Insert(0, new Group { Id = 0, Name = "--brak--" });
 
-            };
+            Groups = new ObservableCollection<Group>(groups);
 
-            Student.Group.Id = 0;
+
+            SelectedGroupId = Student.Group.Id = 0;
         }
-
     }
 }

@@ -8,11 +8,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Diary.Models.Domains;
 
 namespace Diary.ViewModels
 {
     class MainViewModels : ViewModelsBase
     {
+        private Repository _repositiry = new Repository();
         public MainViewModels()
         {
             using (var context = new ApplicationDbContext())
@@ -60,9 +62,9 @@ namespace Diary.ViewModels
                 OnPropertyChanged();
             }
         }
-        private ObservableCollection<GroupWrapper> _group;
+        private ObservableCollection<Group> _group;
 
-        public ObservableCollection<GroupWrapper> Groups
+        public ObservableCollection<Group> Groups
         {
             get { return _group; }
             set
@@ -102,7 +104,8 @@ namespace Diary.ViewModels
                   MessageDialogStyle.AffirmativeAndNegative);
 
             if (dialog != MessageDialogResult.Affirmative)
-                // usuwanie z bazy danych
+
+                _repositiry.DeleteStudent(SelectedStudent.Id);
 
                 RefreshDiary();
         }
@@ -122,40 +125,18 @@ namespace Diary.ViewModels
 
         private void InitGruops()
         {
-            Groups = new ObservableCollection<GroupWrapper>
-            {
-                new GroupWrapper  { Id = 0, Name = "Wszystkie" },
-                new GroupWrapper  { Id = 1, Name = "1A" },
-                new GroupWrapper  { Id = 2, Name = "2A" }
+            var groups = _repositiry.GetGroups();
+            groups.Insert(0, new Group { Id = 0, Name = "Wszystkie" });
 
-            };
+            Groups = new ObservableCollection<Group>(groups);
+           
 
             SelectedGroupId = 0;
         }
         private void RefreshDiary()
         {
-            Students = new ObservableCollection<StudentWrapper>
-            {
-                new StudentWrapper
-                {
-                    FirstName = " Paweł",
-                LastName =" Nowy",
-                Group = new GroupWrapper {Id =1}
-                },
-
-                new StudentWrapper
-                {
-                    FirstName = " Ewa",
-                LastName =" Adamczyk",
-                Group = new GroupWrapper {Id =2}
-                },
-                new StudentWrapper
-                {
-                    FirstName = " Monika",
-                LastName =" Grelewska",
-                Group = new GroupWrapper {Id =3}
-                },
-            };
+            Students = new ObservableCollection<StudentWrapper>(_repositiry.GetStudents(SelectedGroupId));
+            
         }
 
 

@@ -66,7 +66,7 @@
             SelectedValuePath="Id"
             />
 
-        <CheckBox IsChecked="{Binding Student.Id}" Content="Zajęcia Dodatkowe" Grid.Row="9" Grid.Column="1"/>
+        <CheckBox IsChecked="{Binding Student.Activities}" Content="Zajęcia Dodatkowe" Grid.Row="9" Grid.Column="1"/>
 
         <Label Grid.Row="10" Content="Uwagi:" Margin="5"/>
         <TextBox Text="{Binding Student.Comments}"

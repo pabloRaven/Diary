@@ -1,4 +1,4 @@
-namespace Diary.Migrations
+﻿namespace Diary.Migrations
 {
     using System;
     using System.Data.Entity;
@@ -10,13 +10,14 @@ namespace Diary.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            //ContextKey = "diary.ApplicationDbContext";
         }
 
         protected override void Seed(Diary.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
         }
     }
